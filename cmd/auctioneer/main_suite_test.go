@@ -196,11 +196,11 @@ var _ = AfterEach(func() {
 })
 
 var _ = SynchronizedAfterSuite(func() {
+	ginkgomon.Kill(sqlProcess)
 	if consulRunner != nil {
 		consulRunner.Stop()
 	}
 
-	ginkgomon.Kill(sqlProcess)
 }, func() {
 	gexec.CleanupBuildArtifacts()
 })
